@@ -14,4 +14,4 @@ Using Python, JavaScript, HTML, and CSS, I implemented a social network that all
  
 - **Edit Post**: Users are able to click an “Edit” button or link on any of their own posts to edit that post.
  
-- **“Like” and “Unlike”**: Users should are able to click a button or link on any post to toggle whether or not they “like” that post.
+- **“Like” and “Unlike”**: Users are able to click a button or link on any post to toggle whether or not they “like” that post.
