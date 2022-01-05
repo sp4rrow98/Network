@@ -1,0 +1,99 @@
+{% extends "network/layout.html" %} {% load static %} {% block body %}
+<div class="container card-post">
+	{% for post in page_obj %}
+	<div class="whole-card" id="edit-box-{{post.id}}">
+		<div class="card mb-3">
+			<div class="card-body d-flex justify-content-between" id="btn-div">
+				<h5 class="card-title text-left">
+					<a
+						href="{% url 'profile' post.owner %}"
+						class="noDecoration link-info d-inline"
+						>{{post.owner}}</a
+					>
+				</h5>
+
+				{% if request.user == post.owner %}
+				<button
+					type="button"
+					id="edit-btn-{{post.id}}"
+					class="btn btn-secondary"
+					onclick="edit('{{post.id}}')"
+				>
+					Edit
+				</button>
+				{% endif %}
+			</div>
+			<div class="card-body">
+				<pre class="card-text">{{post.description}}</pre>
+				<div class="row justify-content-between container">
+					<div
+						class="
+							try
+							d-inline-flex
+							text-center
+							mt-auto
+							mb-auto
+							justify-content-center
+						"
+					>
+						<p class="card-text mr-1 likes-number-{{post.id}}">
+							{{post.likes}}
+						</p>
+						<p>Likes</p>
+						<i
+							class="fa-regular fa-thumbs-up ml-5 mt-1 like-button-{{post.id}}"
+							onclick="like('{{post.id}}')"
+						></i>
+					</div>
+					<p class="card-text">
+						<small class="text-muted">{{post.timestamp}}</small>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+
+	<div class="pb-5 pt-2">
+		<nav aria-label="...">
+			<ul class="pagination justify-content-center">
+				{% if page_obj.has_previous %}
+				<li class="page-item">
+					<a class="page-link" href="?page={{ page_obj.previous_page_number }}"
+						>Previous</a
+					>
+				</li>
+				{% else %}
+				<li class="page-item disabled">
+					<a class="page-link disabled">Previous</a>
+				</li>
+				{% endif %}		
+				<li class="page-item active" aria-current="page">
+					<span class="page-link">
+						{{ page_obj.number }}
+						<span class="sr-only">(current)</span>
+					</span>
+				</li>
+				{% if page_obj.has_next %}
+				<li class="page-item">
+					<a class="page-link" href="?page={{ page_obj.next_page_number }}"
+						>{{ page_obj.next_page_number }}</a
+					>
+				</li>
+				<li class="page-item">
+					<a class="page-link" href="?page={{ page_obj.next_page_number }}"
+						>Next</a
+					>
+				</li>
+				{% else %}
+				<li class="page-item disabled">
+					<a class="page-link disabled">Next</a>
+				</li>
+				{% endif %}
+			</ul>
+		</nav>
+	</div>
+</div>
+{% block script %}
+<script src="{% static 'network/script.js' %}"></script>
+{% endblock %} {% endblock %}

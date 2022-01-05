@@ -1,0 +1,76 @@
+@media only screen and (min-width: 768px){
+    .bl {
+    border-left: solid 1px black;
+    }
+}
+
+.card-post {
+    max-height: 500px;
+}
+
+.card-img-top {
+    width: 100%;
+	max-height: 30vw;
+	object-fit: contain;
+}
+
+@media only screen and (max-width: 768px) {
+    .card-img-top {
+        width: 100%;
+        max-height: 100vw;
+        object-fit: contain;
+    }
+}
+pre{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 8; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+
+.noDecoration, a:link, a:visited, a:hover {
+    text-decoration: none!important;
+    color: black;
+}
+
+#like-btn {
+    opacity: 0.9;
+}
+
+/* ANIMATION */
+
+@keyframes appear {
+    0% {        
+        opacity: 0;
+        height: 0px;
+        line-height: 0px;
+        padding: 0px;
+        margin-bottom: 0px;
+    }
+    75% {
+        opacity: 0.5;
+        height: 80%;
+        width: 100%;
+    }
+    100% {
+        opacity: 1;
+        height: 100%;
+        line-height: 100%;
+        padding: 20px;
+        margin-bottom: 10px;
+    }
+}
+
+.appear {
+    background-color: rgb(241, 234, 234);
+    color: black;
+    padding: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    animation-name: appear;
+    animation-duration: 1.2s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+}
